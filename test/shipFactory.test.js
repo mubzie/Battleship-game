@@ -1,23 +1,25 @@
 import { shipFactory } from "../src/modules/shipFactory";
 
+let ship;
+
+beforeEach(() => {
+    ship = shipFactory(3)
+})
+
 test('check length', () => {
-    const battleship = shipFactory(4)
-    expect(battleship.length).toHaveLength(4);
+    expect(ship.shipLength).toHaveLength(3);
 })
 
 test('test hit function', () => {
-    const battleship = shipFactory(4)
-    battleship.hit()
-    battleship.hit()
-    battleship.hit()
-    expect(battleship.hits).toBe(3);
+    ship.hit(0)
+    ship.hit(2)
+    expect(ship.shipLength[0]).toBe('hit');
+    expect(ship.shipLength[2]).toBe('hit');
 })
 
 test('check isSunk function', () => {
-    const battleship = shipFactory(4)
-    battleship.hit()
-    battleship.hit()
-    battleship.hit()
-    battleship.hit()
-    expect(battleship.isSunk()).toBe(true);
+    ship.hit(0)
+    ship.hit(1)
+    ship.hit(2)
+    expect(ship.isSunk()).toBe(true);
 })

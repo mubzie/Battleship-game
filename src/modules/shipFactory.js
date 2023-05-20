@@ -1,30 +1,29 @@
 const shipFactory = (size) => {
     
     
-    const length = new Array(size)
+    const shipLength = new Array(size).fill('')
 
-    let _hits = 0;
+    // const shipArray
 
-    const hit = () => {
-        _hits = _hits + 1;
+    const hit = (index) => {
+
+        if (shipLength[index] === '') {
+            shipLength[index] = 'hit'
+
+        } else {
+            return 
+        }
 
     }
 
     const isSunk = () => {
 
-        if(length.length == _hits) {
-            return true
-        } else {
-            return false
-        }
+        return shipLength.every((element) => element === 'hit')
 
     }
 
     return {
-        length,
-        get hits() {
-            return _hits
-        },
+        shipLength,
         hit,
         isSunk
     }
