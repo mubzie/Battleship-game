@@ -7,7 +7,10 @@
     "extends": "eslint:recommended",
     "overrides": [
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
+        "SourceType": "module",
+        "allowImportExportEverywhere": true,
         "ecmaVersion": "latest"
     },
     "rules": {
